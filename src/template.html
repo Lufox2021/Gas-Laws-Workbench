@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gas Laws Workbench</title>
+<style>
+/*CSS*/
+</style>
+</head>
+<body>
+<header>
+  <h1>Gas Laws Workbench</h1>
+  <p>One equation, PV = nRT, and everything that follows from it · General Chemistry</p>
+</header>
+<nav>
+  <button data-tab="review" class="on">Review</button>
+  <button data-tab="coach">Coaching</button>
+  <button data-tab="test">Testing</button>
+  <button data-tab="lab">Gas Lab</button>
+  <button data-tab="inst">Instructor</button>
+</nav>
+<main>
+
+<!-- ================= REVIEW ================= -->
+<section class="tab on review" id="tab-review">
+  <div class="card">
+    <h3>1 · Pressure</h3>
+    <p>Pressure is force per area, <span class="formula">P = F / A</span>. Gas pressure comes from molecules colliding with the walls of their container.</p>
+    <table>
+      <tr><th>Unit</th><th>Equal to 1 atm</th></tr>
+      <tr><td>atmosphere (atm)</td><td>1 atm</td></tr>
+      <tr><td>millimeters of mercury (mmHg) = torr</td><td>760 mmHg = 760 torr (exact)</td></tr>
+      <tr><td>pounds per square inch (psi)</td><td>14.70 psi</td></tr>
+      <tr><td>inches of mercury (in Hg)</td><td>29.92 in Hg</td></tr>
+      <tr><td>pascal (Pa = N/m²)</td><td>101,325 Pa = 101.325 kPa</td></tr>
+    </table>
+    <p><b>Reading an open-end manometer.</b> Mercury is pushed away from the side with the higher pressure.</p>
+    <ul>
+      <li>Open arm higher → the gas pushes harder than the air: <span class="formula">P<sub>gas</sub> = P<sub>atm</sub> + h</span></li>
+      <li>Flask arm higher → the air pushes harder than the gas: <span class="formula">P<sub>gas</sub> = P<sub>atm</sub> − h</span></li>
+    </ul>
+    <p class="note">Worked example (slide 6): P<sub>atm</sub> = 760 mmHg, open arm 120 mm higher → P<sub>gas</sub> = 880 mmHg × (14.70 psi / 760 mmHg) = 17.0 psi.</p>
+  </div>
+
+  <div class="card">
+    <h3>2 · One equation</h3>
+    <p>Everything in this unit comes from the ideal gas law:</p>
+    <p><span class="formula" style="font-size:1.4rem">PV = nRT</span></p>
+    <table>
+      <tr><th>R</th><th>Use it when you work in…</th></tr>
+      <tr><td>0.08206 L·atm/(mol·K)</td><td>atm and liters (this tool's default)</td></tr>
+      <tr><td>62.36 L·mmHg/(mol·K)</td><td>mmHg and liters</td></tr>
+      <tr><td>8.314 J/(mol·K) = 8.314 L·kPa/(mol·K)</td><td>energy, molecular speeds, or kPa</td></tr>
+    </table>
+    <p>Rearranged, <i>PV/(nT) = R</i>. Since R never changes, the same sample of gas has the same value of <i>PV/(nT)</i> before and after any change:</p>
+    <div class="eqbox" id="rv-eq"></div>
+    <p><b>Try it:</b> click a quantity to hold it constant and cross it out. What is left is one of the "named" gas laws.</p>
+    <div class="chips" id="rv-chips"></div>
+    <p>What's left: <span class="eqbox" id="rv-red" style="font-size:1.15rem"></span> <span id="rv-law"></span></p>
+    <table>
+      <tr><th>Hold constant</th><th>What's left</th><th>Name</th><th>In words</th></tr>
+      <tr><td>n, T</td><td>P<sub>1</sub>V<sub>1</sub> = P<sub>2</sub>V<sub>2</sub></td><td>Boyle (1662)</td><td>P and V move in opposite directions</td></tr>
+      <tr><td>n, P</td><td>V<sub>1</sub>/T<sub>1</sub> = V<sub>2</sub>/T<sub>2</sub></td><td>Charles (1787)</td><td>V rises with T (in kelvin)</td></tr>
+      <tr><td>n, V</td><td>P<sub>1</sub>/T<sub>1</sub> = P<sub>2</sub>/T<sub>2</sub></td><td>Gay-Lussac / Amontons</td><td>P rises with T in a rigid container</td></tr>
+      <tr><td>P, T</td><td>V<sub>1</sub>/n<sub>1</sub> = V<sub>2</sub>/n<sub>2</sub></td><td>Avogadro (1811)</td><td>V rises with the number of moles</td></tr>
+      <tr><td>n only</td><td>P<sub>1</sub>V<sub>1</sub>/T<sub>1</sub> = P<sub>2</sub>V<sub>2</sub>/T<sub>2</sub></td><td>combined gas law</td><td>a fixed sample, everything else changes</td></tr>
+    </table>
+    <p class="note">History runs the other way: the individual laws were measured first, and Clapeyron combined them into one equation in 1834. Kinetic theory (section 5) later derived the same equation from Newton's laws. So the named laws are the evidence; PV = nRT is the summary.</p>
+    <p><b>Always use kelvin.</b> The proportionalities hold only on an absolute scale: K = °C + 273.15. Pressures and volumes may be in any unit, as long as both states use the same one.</p>
+  </div>
+
+  <div class="card">
+    <h3>3 · Using PV = nRT for one state</h3>
+    <p>Rearrange for whatever is unknown: <span class="formula">P = nRT/V</span> <span class="formula">V = nRT/P</span> <span class="formula">n = PV/(RT)</span> <span class="formula">T = PV/(nR)</span></p>
+    <p>Before substituting, put every value in R's units: atm, L, mol, K.</p>
+    <ul>
+      <li><b>STP</b> is 0 °C (273.15 K) and 1 atm. One mole of an ideal gas at STP occupies <b>22.4 L</b>. At 25 °C and 1 atm it occupies 24.5 L.</li>
+      <li><b>Molar mass:</b> find n = PV/(RT), then M = mass ÷ n. In one step, <span class="formula">M = mRT/(PV)</span>.</li>
+      <li><b>Density:</b> substitute n = m/M into PV = nRT and you get <span class="formula">d = m/V = PM/(RT)</span>, or <span class="formula">M = dRT/P</span>.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>4 · Gas stoichiometry</h3>
+    <p>The balanced equation counts <i>moles</i>, so every problem runs through moles. PV = nRT is the bridge between a gas's volume and its moles.</p>
+    <p><span class="formula">grams of A → moles of A → (mole ratio) → moles of B → V of B = nRT/P</span></p>
+    <p>The mole ratio comes from the coefficients: moles of B = moles of A × (coefficient of B ÷ coefficient of A).</p>
+    <p><b>Gas to gas at the same T and P:</b> because V ∝ n (Avogadro), gas volumes combine in the same ratio as the coefficients, and R is not needed. For N<sub>2</sub> + 3 H<sub>2</sub> → 2 NH<sub>3</sub>, 15.0 L of H<sub>2</sub> makes 15.0 × (2/3) = 10.0 L of NH<sub>3</sub>.</p>
+  </div>
+
+  <div class="card">
+    <h3>5 · Dalton's law of partial pressures</h3>
+    <p>Each gas in a mixture behaves as if it were alone:</p>
+    <p><span class="formula">P<sub>total</sub> = P<sub>1</sub> + P<sub>2</sub> + … </span> <span class="formula">P<sub>i</sub> = χ<sub>i</sub> P<sub>total</sub>, χ<sub>i</sub> = n<sub>i</sub>/n<sub>total</sub></span></p>
+    <p><b>Collecting a gas over water.</b> The bottle holds the gas <i>plus</i> water vapor, so <span class="formula">P<sub>gas</sub> = P<sub>total</sub> − P<sub>H₂O</sub></span>. Use P<sub>gas</sub> in PV = nRT.</p>
+    <table id="vp-table"></table>
+  </div>
+
+  <div class="card">
+    <h3>6 · Kinetic theory</h3>
+    <p>Gas particles are tiny compared with the space between them, move randomly, and collide elastically. Averaging their collisions with the walls gives, for one mole, <span class="formula">PV = ⅔ N<sub>0</sub> ε<sub>avg</sub></span> (slide 19), which matches PV = nRT only if the average kinetic energy is proportional to the kelvin temperature:</p>
+    <p><span class="formula">KE<sub>avg</sub> = (3/2) RT per mole</span> <span class="formula">u<sub>rms</sub> = √(3RT/M)</span></p>
+    <p>For speeds, use R = 8.314 J/(mol·K) and M in <b>kg/mol</b>, because 1 J = 1 kg·m²/s².</p>
+    <p><b>Graham's law of effusion:</b> lighter gases are faster: <span class="formula">rate<sub>A</sub> / rate<sub>B</sub> = √(M<sub>B</sub> / M<sub>A</sub>)</span></p>
+  </div>
+
+  <div class="card">
+    <h3>7 · Real gases</h3>
+    <p>Real gases depart from ideal behavior at <b>high pressure</b> and <b>low temperature</b>, for two reasons the ideal model ignores (slide 23):</p>
+    <ul>
+      <li><b>Particle volume (b):</b> particles take up space, so they have less room to move: V becomes V − nb. This raises the pressure.</li>
+      <li><b>Attractions (a):</b> neighbors pull each particle back from the wall, so it hits less hard. This lowers the pressure by a·n²/V².</li>
+    </ul>
+    <p><span class="formula">[P + a(n/V)²](V − nb) = nRT</span> → <span class="formula">P = nRT/(V − nb) − a·n²/V²</span></p>
+    <p>The <b>compressibility factor</b> <span class="formula">Z = PV/(nRT)</span> is 1 for an ideal gas. Z &lt; 1 means attractions win; Z &gt; 1 means particle volume wins.</p>
+    <p>The <b>Boyle temperature</b> <span class="formula">T<sub>B</sub> = a/(bR)</span> is where the two effects balance, so the gas behaves ideally over the widest range of pressure.</p>
+    <table id="vdw-table"></table>
+  </div>
+
+  <div class="card">
+    <h3>8 · Common mistakes</h3>
+    <ul>
+      <li>Using °C instead of kelvin (or adding 273 to a temperature <i>change</i>).</li>
+      <li>Using R = 8.314 with atm and liters, or 0.08206 with kPa.</li>
+      <li>Leaving volume in mL, or pressure in mmHg, when R wants L and atm.</li>
+      <li>Two states with mixed units: P<sub>1</sub> in mmHg and P<sub>2</sub> in atm.</li>
+      <li>Ratio upside down. Predict first: should the answer go up or down?</li>
+      <li>Forgetting to subtract water's vapor pressure for a gas collected over water.</li>
+      <li>Using g/mol instead of kg/mol in u<sub>rms</sub>; flipping Graham's ratio.</li>
+      <li>Stoichiometry: skipping the mole ratio, or writing it upside down.</li>
+      <li>Van der Waals: forgetting to square n and V in a·n²/V², or using V − b instead of V − nb.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= COACHING ================= -->
+<section class="tab" id="tab-coach">
+  <div class="card">
+    <div class="row">
+      <label>Problem type <select id="c-level"></select></label>
+      <select id="c-prob" style="max-width:520px"></select>
+      <button class="b2" id="c-pick">Pick one for me</button>
+    </div>
+  </div>
+  <div id="c-area"><div class="card"><p>Choose a problem above to begin. You'll decode it first, then solve it one step at a time.</p></div></div>
+</section>
+
+<!-- ================= TESTING ================= -->
+<section class="tab" id="tab-test">
+  <div class="card">
+    <div class="row">
+      <label>Problem type <select id="t-level"></select></label>
+      <button class="b" id="t-new">New problem</button>
+      <span class="score" id="t-score"></span>
+    </div>
+  </div>
+  <div id="t-area"><div class="card"><p>Pick a problem type and press <b>New problem</b>. Enter the final answer only; significant figures are not graded.</p></div></div>
+</section>
+
+<!-- ================= GAS LAB ================= -->
+<section class="tab" id="tab-lab">
+  <div class="card">
+    <p style="margin:0">Hold <b>two</b> quantities constant, choose one to change, and watch the fourth respond. Whatever you choose, <i>PV/(nT)</i> never moves.</p>
+  </div>
+  <div class="lab">
+    <div class="card" style="padding:8px">
+      <svg id="lab-svg" viewBox="0 -70 280 450" width="100%"></svg>
+    </div>
+    <div>
+      <div class="vcards" id="lab-cards"></div>
+      <div id="lab-note"></div>
+      <div class="card" style="margin-top:8px">
+        <div class="eqbox" id="lab-eq"></div>
+        <div>What's left: <span class="eqbox" id="lab-red" style="font-size:1.1rem"></span> <span id="lab-law"></span></div>
+        <div class="const" id="lab-const"></div>
+      </div>
+      <div class="card">
+        <canvas id="lab-plot" width="520" height="320"></canvas>
+        <div class="row" style="margin-top:6px">
+          <label><input type="checkbox" id="lab-inv"> Plot against 1/x</label>
+          <button class="b2" id="lab-clear">Clear points</button>
+          <button class="b2" id="lab-reset">Reset apparatus</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ================= INSTRUCTOR ================= -->
+<section class="tab" id="tab-inst">
+  <div class="card">
+    <h3>Your problem set</h3>
+    <p>Problems are rows in a spreadsheet saved as .csv or as tab-delimited .txt. You enter only the given values; the tool solves every row itself. If you leave <b>text</b> blank, the tool writes the problem for you. The value of R is added automatically to any problem that needs it.</p>
+    <div class="row"><button class="b2" id="i-tmpl">Download template (.csv)</button><button class="b2" id="i-cur">Download current problems (.csv)</button></div>
+    <div id="i-out"></div>
+  </div>
+  <div class="card">
+    <h3>Upload and check problems</h3>
+    <p><input type="file" id="i-file" accept=".csv,.txt,.tsv"></p>
+    <div id="i-res"></div>
+    <div class="row" id="i-acts" style="display:none;margin-top:10px">
+      <button class="b" id="i-try">Try these in this browser</button>
+      <button class="b2" id="i-json">Download problems.json</button>
+      <label><input type="checkbox" id="i-incl" checked> include the built-in problems</label>
+    </div>
+    <div id="i-json-out"></div>
+    <p class="note" id="i-saved"></p>
+    <button class="b2" id="i-clear">Clear problems saved in this browser</button>
+  </div>
+  <div class="card">
+    <h3>Putting your problems in front of students</h3>
+    <ol>
+      <li>Upload your spreadsheet above and fix any rows marked in red.</li>
+      <li>Press <b>Download problems.json</b>. Leave "include the built-in problems" checked to add to the built-in set; uncheck it to replace the set with yours.</li>
+      <li>On the tool's GitHub repository page: <b>Add file → Upload files</b>, drop in problems.json, then <b>Commit changes</b>. (A commit saves a new version of the repository; GitHub keeps the old ones.)</li>
+      <li>GitHub Pages republishes in a minute or two. Students reload the same link and see your problems.</li>
+    </ol>
+    <p class="note">"Try these in this browser" only changes what <i>you</i> see on this computer. It is a quick way to work problems before publishing them.</p>
+  </div>
+  <div class="card review">
+    <h3>Column reference</h3>
+    <p>Every row needs <b>id</b> (unique), <b>problem_type</b> (1–7, below) and <b>solver</b>. Write each quantity as a number, a space, then the unit: <code>745 mmHg</code>, <code>250. mL</code>, <code>25 °C</code> (or <code>25 C</code>), <code>300 K</code>, <code>0.500 mol</code>, <code>1.25 g</code>.
+      Pressure units: atm, mmHg, torr, psi, inHg, Pa, kPa. Volume: L, mL. Formulas as plain text: <code>CO2</code>, <code>KClO3</code>, <code>Ca(OH)2</code>.</p>
+    <div class="scroll"><table>
+      <tr><th>problem_type</th><th>solver</th><th>Columns</th><th>Example</th></tr>
+      <tr><td>1 Pressure</td><td>pconv</td><td>val, to</td><td>val <code>30.44 inHg</code>, to <code>psi</code></td></tr>
+      <tr><td>1 Pressure</td><td>mano</td><td>Patm, h, side (<code>higher</code> = open arm higher), to (optional)</td><td>Patm <code>760 mmHg</code>, h <code>120 mm</code>, side <code>higher</code>, to <code>psi</code></td></tr>
+      <tr><td>2 Two states</td><td>two</td><td>hold (quantities held constant), find (P, V, T or n), P1 V1 T1 n1, P2 V2 T2 n2 (leave the unknown blank; held quantities may be blank), ansU (<code>C</code> to ask for °C)</td><td>hold <code>nT</code>, find <code>V</code>, P1 <code>1.00 atm</code>, V1 <code>5.00 L</code>, P2 <code>2.50 atm</code></td></tr>
+      <tr><td>3 One state</td><td>one</td><td>find (P, V, T, n, mass, M, d, or Md = molar mass from density), P, V, T, n or mass + gas, d, ansU</td><td>find <code>M</code>, mass <code>1.25 g</code>, V <code>0.500 L</code>, P <code>735 mmHg</code>, T <code>27 °C</code></td></tr>
+      <tr><td>4 Stoichiometry</td><td>stoich</td><td>sub (<code>m2V</code> mass → gas volume, <code>V2m</code> gas volume → mass, <code>V2V</code> gas volume → gas volume), rxn (balanced), known, target, mass or V, P, T</td><td>sub <code>m2V</code>, rxn <code>2 KClO3 -> 2 KCl + 3 O2</code>, known <code>KClO3</code>, target <code>O2</code>, mass <code>12.25 g</code>, P <code>1 atm</code>, T <code>0 °C</code></td></tr>
+      <tr><td>5 Dalton</td><td>dalton</td><td>sub <code>sum</code>: parts · sub <code>frac</code>: moles, target, Ptot · sub <code>water</code>: gas, Ptot (mmHg), T (0, 5 … 50 °C), V, find (Pg, n or mass)</td><td>parts <code>N2=593 mmHg; O2=159 mmHg</code> · moles <code>He=1.50; Ne=0.50</code></td></tr>
+      <tr><td>6 Kinetic theory</td><td>kmt</td><td>sub <code>urms</code>: gas, T · <code>ke</code>: T · <code>graham</code>: A, B · <code>grahamM</code>: known, ratio (rate of unknown ÷ rate of known)</td><td>sub <code>graham</code>, A <code>H2</code>, B <code>O2</code></td></tr>
+      <tr><td>7 Real gases</td><td>real</td><td>sub <code>vdw</code>: gas, n, V (L), T, find (P or Z) · sub <code>boyle</code>: gas. Gases with constants: He, Ne, Ar, Kr, Xe, H2, N2, O2, Cl2, H2O, CH4, CO2, CCl4</td><td>sub <code>vdw</code>, gas <code>CO2</code>, n <code>1.00 mol</code>, V <code>1.00 L</code>, T <code>300 K</code>, find <code>Z</code></td></tr>
+    </table></div>
+    <p class="note">Optional for any row: <b>text</b> (the wording; write {field} to insert a value, e.g. "{mass} of {known}") and <b>src</b> (a label such as "Slide 15").</p>
+  </div>
+</section>
+</main>
+<script>
+/*ENGINE*/
+/*PROBLEMS*/
+/*UI*/
+</script>
+</body>
+</html>
